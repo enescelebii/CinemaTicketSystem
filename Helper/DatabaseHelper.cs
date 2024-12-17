@@ -71,7 +71,6 @@ namespace CinemaTicketSystem.Helpers
         }
 
 
-        // Koltuk eklemek için metot
         public void AddSeats(int salonId, int seatCount)
         {
             using (var connection = Connect())
@@ -82,7 +81,7 @@ namespace CinemaTicketSystem.Helpers
                     var command = new SQLiteCommand(insertSeat, connection);
                     command.Parameters.AddWithValue("@salonId", salonId);
                     command.Parameters.AddWithValue("@seatNumber", i);
-                    command.Parameters.AddWithValue("@isBooked", 0); // Başlangıçta koltuklar boş
+                    command.Parameters.AddWithValue("@isBooked", 0); 
                     command.ExecuteNonQuery();
                 }
             }
@@ -110,7 +109,6 @@ namespace CinemaTicketSystem.Helpers
                     string filmName = reader["film_name"].ToString();
                     string filmTime = reader["film_time"].ToString();
 
-                    // Yeni salon geldiğinde yeni bir Salon nesnesi oluştur
                     if (currentSalon == null || currentSalon.Name != salonName)
                     {
                         currentSalon = new Salon
@@ -121,7 +119,6 @@ namespace CinemaTicketSystem.Helpers
                         salonlar.Add(currentSalon);
                     }
 
-                    // Filmi o salona ekle
                     currentSalon.Films.Add(new Film
                     {
                         Name = filmName,
@@ -183,9 +180,6 @@ namespace CinemaTicketSystem.Helpers
             }
         }
 
-
-
-        // Koltuk durumu güncelleme
         public async Task UpdateSeatStatusAsync(int salonId, int seatNumber, bool isBooked)
         {
             using (var connection = new SQLiteConnection(connectionString))

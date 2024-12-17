@@ -152,7 +152,6 @@ namespace CinemaTicketSystem
             UpdateSelectedCount();
         }
 
-        // Seçim alanının dikdörtgen şeklinde hesaplanması
         private Rectangle GetSelectionRectangle(Point baslangic, Point bitis)
         {
             return new Rectangle(
@@ -163,7 +162,6 @@ namespace CinemaTicketSystem
             );
         }
 
-        // Koltukları panelde gösterme
         private void KoltuklariPaneldeGoster(bool[] koltuklar)
         {
             int satirSayisi = 5;
@@ -230,7 +228,7 @@ namespace CinemaTicketSystem
         {
             var clickedSeat = (PictureBox)sender;
 
-            int seatNumber = (int)clickedSeat.Tag + 1; // Koltuk numarası
+            int seatNumber = (int)clickedSeat.Tag + 1; 
             string seciliSalon = treeView1.SelectedNode?.Parent?.Text;
             string seciliFilm = treeView1.SelectedNode?.Text.Split('(')[0].Trim();
 
@@ -247,14 +245,13 @@ namespace CinemaTicketSystem
                 return;
             }
 
-            // Veritabanından koltuğun dolu olup olmadığını kontrol et
-            if (dbHelper.IsSeatBooked(salonId, seatNumber))
+
+           if (dbHelper.IsSeatBooked(salonId, seatNumber))
             {
                 MessageBox.Show("Bu koltuk daha önce rezerve edilmiş ve seçilemez.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // Koltuk tam seçilmişse (dolmuşsa) tıklanmasına izin verme
             if (clickedSeat.Image == Properties.Resources.chairFull)
                 return;
 
@@ -344,16 +341,14 @@ namespace CinemaTicketSystem
                 return;
             }
 
-            // Asenkron güncelleme işlemi
             foreach (var koltuk in toplamSecilenKoltuklar)
             {
-                int seatNumber = (int)koltuk.Tag + 1; // Koltuk numarası tag ile alınır.
-                await dbHelper.UpdateSeatStatusAsync(salonId, seatNumber, true); // Koltuğu rezerve et
+                int seatNumber = (int)koltuk.Tag + 1; 
+                await dbHelper.UpdateSeatStatusAsync(salonId, seatNumber, true); 
             }
 
             MessageBox.Show("Seçilen koltuklar başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Paneli yenile ve güncel koltuk durumlarını göster
             bool[] koltuklar = dbHelper.GetSeats(salonId);
             KoltuklariPaneldeGoster(koltuklar);
             toplamSecilenKoltuklar.Clear();

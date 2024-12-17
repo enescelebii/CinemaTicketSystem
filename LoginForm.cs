@@ -15,11 +15,10 @@ namespace CinemaTicketSystem
         public LoginForm()
         {
             InitializeComponent();
-            ResetDatabase(); // Make sure to reset database to ensure Users table is created and default user is added
+            ResetDatabase(); 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        // Reset database and add default user if needed
         private void ResetDatabase()
         {
             EnsureDatabaseExists();
@@ -28,14 +27,12 @@ namespace CinemaTicketSystem
             {
                 connection.Open();
 
-                // Tüm kullanıcıları sil
                 string deleteAllUsersQuery = "DELETE FROM Users";
                 using (var deleteCommand = new SQLiteCommand(deleteAllUsersQuery, connection))
                 {
                     deleteCommand.ExecuteNonQuery();
                 }
 
-                // Varsayılan kullanıcıyı ekle
                 string insertDefaultUserQuery = "INSERT INTO Users (Username, Password) VALUES ('enes', '123')";
                 using (var insertCommand = new SQLiteCommand(insertDefaultUserQuery, connection))
                 {
@@ -46,7 +43,6 @@ namespace CinemaTicketSystem
             }
         }
 
-        // Veritabanı dosyasını oluşturur ve tabloyu hazırlar.
         private void EnsureDatabaseExists()
         {
             if (!System.IO.File.Exists(DatabasePath))
@@ -72,7 +68,6 @@ namespace CinemaTicketSystem
             }
         }
 
-        // Register button logic
         private void registerkytbtn_Click(object sender, EventArgs e)
         {
             string username = registerusername.Text;
@@ -92,7 +87,7 @@ namespace CinemaTicketSystem
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@username", username);
-                    command.Parameters.AddWithValue("@password", password); // Consider hashing password in real applications
+                    command.Parameters.AddWithValue("@password", password); 
                     try
                     {
                         command.ExecuteNonQuery();
@@ -107,13 +102,11 @@ namespace CinemaTicketSystem
             }
         }
 
-        // Go to register page
         private void registerbtn_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
         }
 
-        // Login button logic
         private void loginbtn_Click_1(object sender, EventArgs e)
         {
             string username = this.username.Text;
@@ -132,7 +125,6 @@ namespace CinemaTicketSystem
                     int userCount = Convert.ToInt32(command.ExecuteScalar());
                     if (userCount > 0)
                     {
-                        // Login successful, show Form1
                         Form1 form1 = new Form1();
                         form1.Show();
                         this.Hide();
@@ -145,7 +137,6 @@ namespace CinemaTicketSystem
             }
         }
 
-        // Exit the application
         private void button2_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Uygulamayı kapatmak istediğinize emin misiniz?", "Çıkış Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -156,7 +147,6 @@ namespace CinemaTicketSystem
             }
         }
 
-        // Back to login page from register page
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
