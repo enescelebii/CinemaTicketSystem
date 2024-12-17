@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CinemaTicketSystem
 {
     public partial class LoginForm : Form
     {
-        private static readonly string DatabasePath = "C:\\Users\\ENES\\source\\repos\\Project-1\\CinemaTicketSystem\\CinemaTicket_db.db";
+        private static readonly string DatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CinemaTicket_db.db");
         private static readonly string ConnectionString = $"Data Source={DatabasePath};Version=3;";
+
+
 
         public LoginForm()
         {

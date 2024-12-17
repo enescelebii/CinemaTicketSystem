@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.registerkytbtn = new System.Windows.Forms.Button();
-            this.registerpassword = new System.Windows.Forms.MaskedTextBox();
-            this.registerusername = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.registerbtn = new System.Windows.Forms.Button();
@@ -47,9 +38,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.registerkytbtn = new System.Windows.Forms.Button();
+            this.registerpassword = new System.Windows.Forms.MaskedTextBox();
+            this.registerusername = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,103 +61,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(766, 491);
             this.tabControl1.TabIndex = 6;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Maroon;
-            this.tabPage2.BackgroundImage = global::CinemaTicketSystem.Properties.Resources.login_background;
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.registerkytbtn);
-            this.tabPage2.Controls.Add(this.registerpassword);
-            this.tabPage2.Controls.Add(this.registerusername);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(758, 458);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Register";
-            // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.OrangeRed;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(694, 21);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 46);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // registerkytbtn
-            // 
-            this.registerkytbtn.BackColor = System.Drawing.Color.Peru;
-            this.registerkytbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.registerkytbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.registerkytbtn.Location = new System.Drawing.Point(436, 233);
-            this.registerkytbtn.Name = "registerkytbtn";
-            this.registerkytbtn.Size = new System.Drawing.Size(110, 44);
-            this.registerkytbtn.TabIndex = 5;
-            this.registerkytbtn.Text = "Kayıt";
-            this.registerkytbtn.UseVisualStyleBackColor = false;
-            this.registerkytbtn.Click += new System.EventHandler(this.registerkytbtn_Click);
-            // 
-            // registerpassword
-            // 
-            this.registerpassword.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.registerpassword.Location = new System.Drawing.Point(321, 233);
-            this.registerpassword.Name = "registerpassword";
-            this.registerpassword.Size = new System.Drawing.Size(100, 26);
-            this.registerpassword.TabIndex = 4;
-            // 
-            // registerusername
-            // 
-            this.registerusername.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.registerusername.Location = new System.Drawing.Point(321, 194);
-            this.registerusername.Name = "registerusername";
-            this.registerusername.Size = new System.Drawing.Size(182, 26);
-            this.registerusername.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label6.Location = new System.Drawing.Point(228, 223);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 37);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Şifre: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label5.Location = new System.Drawing.Point(110, 186);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(225, 37);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Kullanıcı Adı: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.Color.SandyBrown;
-            this.label4.Location = new System.Drawing.Point(290, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(213, 37);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Kayıt Sistemi";
             // 
             // tabPage1
             // 
@@ -176,7 +79,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(758, 420);
+            this.tabPage1.Size = new System.Drawing.Size(758, 458);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Login";
             // 
@@ -277,6 +180,103 @@
             this.label1.Text = "Sinema Salonu Sistemi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Maroon;
+            this.tabPage2.BackgroundImage = global::CinemaTicketSystem.Properties.Resources.login_background;
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.registerkytbtn);
+            this.tabPage2.Controls.Add(this.registerpassword);
+            this.tabPage2.Controls.Add(this.registerusername);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(758, 458);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Register";
+            // 
+            // button1
+            // 
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.BackColor = System.Drawing.Color.OrangeRed;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(694, 21);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 46);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // registerkytbtn
+            // 
+            this.registerkytbtn.BackColor = System.Drawing.Color.Peru;
+            this.registerkytbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.registerkytbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.registerkytbtn.Location = new System.Drawing.Point(436, 233);
+            this.registerkytbtn.Name = "registerkytbtn";
+            this.registerkytbtn.Size = new System.Drawing.Size(110, 44);
+            this.registerkytbtn.TabIndex = 5;
+            this.registerkytbtn.Text = "Kayıt";
+            this.registerkytbtn.UseVisualStyleBackColor = false;
+            this.registerkytbtn.Click += new System.EventHandler(this.registerkytbtn_Click);
+            // 
+            // registerpassword
+            // 
+            this.registerpassword.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.registerpassword.Location = new System.Drawing.Point(321, 233);
+            this.registerpassword.Name = "registerpassword";
+            this.registerpassword.Size = new System.Drawing.Size(100, 26);
+            this.registerpassword.TabIndex = 4;
+            // 
+            // registerusername
+            // 
+            this.registerusername.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.registerusername.Location = new System.Drawing.Point(321, 194);
+            this.registerusername.Name = "registerusername";
+            this.registerusername.Size = new System.Drawing.Size(182, 26);
+            this.registerusername.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label6.Location = new System.Drawing.Point(228, 223);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 37);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Şifre: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label5.Location = new System.Drawing.Point(110, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 37);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Kullanıcı Adı: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.SandyBrown;
+            this.label4.Location = new System.Drawing.Point(290, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(213, 37);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Kayıt Sistemi";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -290,10 +290,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace CinemaTicketSystem.Helpers
 {
     public class DatabaseHelper
     {
-        public string connectionString = @"Data Source=C:\Users\ENES\source\repos\Project-1\CinemaTicketSystem\CinemaTicket_db.db;Version=3;Pooling=True;";
+        public string connectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CinemaTicket_db.db")};Version=3;Pooling=True;";
 
         public SQLiteConnection Connect()
         {
@@ -38,7 +39,7 @@ namespace CinemaTicketSystem.Helpers
                 film_name TEXT NOT NULL,
                 film_time TEXT NOT NULL
             )";
-                string createSeatsTable = @"
+               string createSeatsTable = @"
             CREATE TABLE IF NOT EXISTS Seats (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 salon_id INTEGER NOT NULL,

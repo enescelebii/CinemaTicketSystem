@@ -21,8 +21,8 @@ namespace CinemaTicketSystem
             InitializeComponent();
             InitializeTimeLabel(); 
             dbHelper = new DatabaseHelper();
-            dbHelper.CreateDatabase();
-            SinemaVerileriniHazirla();
+            //dbHelper.CreateDatabase();
+            //SinemaVerileriniHazirla();
             SinemaSalonlariniListele();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
