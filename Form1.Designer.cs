@@ -159,9 +159,9 @@
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.SelectedCount);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

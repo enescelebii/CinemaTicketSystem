@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 
 namespace CinemaTicketSystem
 {
@@ -17,15 +15,14 @@ namespace CinemaTicketSystem
         private bool isMouseDown = false;
         private Point secimBaslangicNoktasi;
         private List<PictureBox> geciciSecilenKoltuklar = new List<PictureBox>();
-        private HashSet<PictureBox> graphicsSeats = new HashSet<PictureBox>();
 
         public Form1()
         {
             InitializeComponent();
-            InitializeTimeLabel();
+            InitializeTimeLabel(); 
             dbHelper = new DatabaseHelper();
-            dbHelper.CreateDatabase();
-            SinemaVerileriniHazirla();
+            //dbHelper.CreateDatabase();
+            //SinemaVerileriniHazirla();
             SinemaSalonlariniListele();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -36,7 +33,6 @@ namespace CinemaTicketSystem
             treeView1.BringToFront();
         }
 
-        
         private void InitializeTimeLabel()
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
@@ -112,7 +108,7 @@ namespace CinemaTicketSystem
 
             bool[] koltuklar = dbHelper.GetSeats(salonId);
             KoltuklariPaneldeGoster(koltuklar);
-
+           
         }
 
         private void PanelSeats_MouseDown(object sender, MouseEventArgs e)
@@ -392,7 +388,7 @@ namespace CinemaTicketSystem
                 using (Brush emptyBrush = new SolidBrush(Color.FromArgb(96, 96, 96))) 
                 {
                     g.FillPie(emptyBrush, chartArea, selectedPercentage, emptyPercentage);
-                }
+        }
 
                 using (Brush textBrush = new SolidBrush(Color.White))
                 {
@@ -401,6 +397,6 @@ namespace CinemaTicketSystem
                 }
             };
         }
-
+        
     }
 }

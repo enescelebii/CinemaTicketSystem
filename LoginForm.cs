@@ -92,7 +92,7 @@ namespace CinemaTicketSystem
                     {
                         command.ExecuteNonQuery();
                         MessageBox.Show("Kayıt başarıyla oluşturuldu!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        tabControl1.SelectedIndex = 0;
+                        tabControl1.SelectedIndex = 0; // Go back to login page
                     }
                     catch (SQLiteException ex)
                     {
