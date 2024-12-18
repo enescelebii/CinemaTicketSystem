@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace CinemaTicketSystem
 {
@@ -15,14 +17,15 @@ namespace CinemaTicketSystem
         private bool isMouseDown = false;
         private Point secimBaslangicNoktasi;
         private List<PictureBox> geciciSecilenKoltuklar = new List<PictureBox>();
+        private HashSet<PictureBox> graphicsSeats = new HashSet<PictureBox>();
 
         public Form1()
         {
             InitializeComponent();
-            InitializeTimeLabel(); 
+            InitializeTimeLabel();
             dbHelper = new DatabaseHelper();
-            //dbHelper.CreateDatabase();
-            //SinemaVerileriniHazirla();
+            dbHelper.CreateDatabase();
+            SinemaVerileriniHazirla();
             SinemaSalonlariniListele();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -33,6 +36,7 @@ namespace CinemaTicketSystem
             treeView1.BringToFront();
         }
 
+        
         private void InitializeTimeLabel()
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
@@ -108,7 +112,7 @@ namespace CinemaTicketSystem
 
             bool[] koltuklar = dbHelper.GetSeats(salonId);
             KoltuklariPaneldeGoster(koltuklar);
-           
+
         }
 
         private void PanelSeats_MouseDown(object sender, MouseEventArgs e)
@@ -351,10 +355,52 @@ namespace CinemaTicketSystem
 
             bool[] koltuklar = dbHelper.GetSeats(salonId);
             KoltuklariPaneldeGoster(koltuklar);
+
+            ShowSeatChart(toplamSecilenKoltuklar.Count, koltuklar.Length);
+
             toplamSecilenKoltuklar.Clear();
             UpdateSelectedCount();
+
+
+
         }
 
-        
+        private void ShowSeatChart(int selectedSeats, int totalSeats)
+        {
+            Panel chartPanel = new Panel
+            {
+                Size = new Size(100, 110), 
+                Location = new Point(this.ClientSize.Width - 110, this.ClientSize.Height - 150), 
+                BackColor = Color.FromArgb(30, 30, 30) 
+            };
+
+            this.Controls.Add(chartPanel); 
+
+            chartPanel.Paint += (s, e) =>
+            {
+                Graphics g = e.Graphics;
+                Rectangle chartArea = new Rectangle(10, 10, 80, 80); 
+
+                float selectedPercentage = (float)selectedSeats / totalSeats * 360;
+                float emptyPercentage = 360 - selectedPercentage;
+
+                using (Brush selectedBrush = new SolidBrush(Color.FromArgb(240, 0, 0))) 
+                {
+                    g.FillPie(selectedBrush, chartArea, 0, selectedPercentage);
+                }
+
+                using (Brush emptyBrush = new SolidBrush(Color.FromArgb(96, 96, 96))) 
+                {
+                    g.FillPie(emptyBrush, chartArea, selectedPercentage, emptyPercentage);
+                }
+
+                using (Brush textBrush = new SolidBrush(Color.White))
+                {
+                    g.DrawString("S: " + selectedSeats, new Font("Arial", 6), textBrush, 10, 95); 
+                    g.DrawString("B: " + (totalSeats - selectedSeats), new Font("Arial", 6), textBrush, 50, 95); 
+                }
+            };
+        }
+
     }
 }
